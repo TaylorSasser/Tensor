@@ -1,9 +1,10 @@
 #ifndef NVTENSOR_PRODUCT_HPP
 #define NVTENSOR_PRODUCT_HPP
 
-#include "../tensor/tensor.hpp"
-#include "../meta/meta.hpp"
+#include <nvtensor/tensor.hpp>
 #include <iostream>
+#include <nvtensor/meta.hpp>
+
 
 namespace nvstd
 {

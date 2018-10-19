@@ -1,6 +1,8 @@
 #include <iostream>
+#include <nvtensor/tensor.hpp>
+#include <nvtensor/product.hpp>
+
 #include "catch.hpp"
-#include "../include/blas/product.hpp"
 
 template<typename T,T... As>
 std::ostream& operator<<(std::ostream& os,nvstd::integer_sequence<T, As...> const& seq)

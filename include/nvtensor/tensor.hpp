@@ -2,7 +2,7 @@
 #define NVTENSOR_TENSOR_HPP
 
 #include <numeric>
-#include "../meta/meta.hpp"
+#include "meta.hpp"
 
 namespace nvstd
 {
@@ -15,7 +15,7 @@ namespace nvstd
 			: dims{Ts...}
 		{}
 
-		enum : unsigned long long
+		enum
 		{
 			rank = Rank,
 		};

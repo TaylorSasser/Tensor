@@ -18,8 +18,8 @@ namespace nvstd
 		};
 	};
 
-	template<unsigned int... Dims>
-	using dims_sequence = integer_sequence<unsigned int,Dims...>;
+	template<std::size_t... Dims>
+	using dims_sequence = integer_sequence<std::size_t,Dims...>;
 
 	namespace impl
 	{
@@ -92,7 +92,7 @@ namespace nvstd
 			template<typename F, typename... X>
 			constexpr void operator()(F const &function, X... x)
 			{
-				for (int i = 0; i < Head; ++i)
+				for (T i = 0; i < Head; ++i)
 					sequence_iterator<integer_sequence<T, Tail...>>{}(function, x..., i);
 			}
 		};
@@ -103,7 +103,7 @@ namespace nvstd
 			template<typename F, typename... X>
 			constexpr void operator()(F const &function, X... x)
 			{
-				for (int i = 0; i < Head; ++i)
+				for (T i = 0; i < Head; ++i)
 					function(x..., i);
 			}
 		};
@@ -142,8 +142,8 @@ namespace nvstd
 		struct add_extents
 		{};
 
-		template<typename T,unsigned int... Ns>
-		struct add_extents<T,dims_sequence<Ns...>>
+		template<typename T,std::size_t... Ns>
+		struct add_extents<T,integer_sequence<std::size_t,Ns...>>
 		{
 			using type = typename impl::extents_adder<T,Ns...>::type;
 		};
@@ -151,15 +151,15 @@ namespace nvstd
 		template<typename T,typename Seq>
 		using add_extents_t = typename add_extents<T,Seq>::type;
 
-		template<typename, typename Sequence = dims_sequence<>>
+		template<typename, typename Sequence = integer_sequence<std::size_t>>
 		struct unpacked_array_type
 		{
 			using type = Sequence;
 		};
 
 		template<typename T, std::size_t N, std::size_t ... I>
-		struct unpacked_array_type<T[N],dims_sequence<I...>>
-			: public unpacked_array_type<T, dims_sequence<I..., N>>
+		struct unpacked_array_type<T[N],integer_sequence<std::size_t,I...>>
+			: public unpacked_array_type<T, integer_sequence<std::size_t,I..., N>>
 		{};
 	}
 

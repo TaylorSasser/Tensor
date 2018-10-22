@@ -2,7 +2,8 @@
 #include <nvtensor/tensor.hpp>
 #include <nvtensor/product.hpp>
 
-#include "catch.hpp"
+#include <catch.hpp>
+
 
 template<typename T,T... As>
 std::ostream& operator<<(std::ostream& os,nvstd::integer_sequence<T, As...> const& seq)
@@ -34,4 +35,6 @@ TEST_CASE("Tensor Return Type Tests","[RETURN-TYPE]")
 		std::cout << delimiter << val;
 		delimiter = ", ";
 	}
+
+	std::cin.get();
 }

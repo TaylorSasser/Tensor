@@ -27,7 +27,7 @@ target_compile_options(tests_config INTERFACE
             -Wsign-conversion
         >)
 
-target_include_directories(tests_config INTERFACE catch.hpp)
+target_include_directories(tests_config INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/catch)
 
 target_compile_definitions(tests_config INTERFACE
         GSL_THROW_ON_CONTRACT_VIOLATION)
